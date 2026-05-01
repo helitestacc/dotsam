@@ -1,0 +1,16 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Transform: AWS::Serverless-2016-10-31
+Resources:
+  PocFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: MyFunction::MyFunction.Function::FunctionHandler
+      Runtime: dotnet8
+      CodeUri: ./
+      MemorySize: 256
+      Timeout: 30
+      FunctionUrlConfig:
+        AuthType: NONE
+Outputs:
+  FunctionUrl:
+    Value: !GetAtt PocFunctionUrl.FunctionUrl
